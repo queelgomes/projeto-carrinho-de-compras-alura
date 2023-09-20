@@ -6,7 +6,8 @@ public class Compra {
     Scanner scanner = new Scanner(System.in);
     // atributos :::
     private double limite;
-    private List<Cliente> itensCarrinho;
+    private double somaProdutos;
+    private List<Produto> itensCarrinho;
 
     // construtor :::
     public Compra() {
@@ -23,7 +24,8 @@ public class Compra {
         double valor = scanner.nextDouble();
         if (limite - valor >= 0) {
             limite -= valor;
-            itensCarrinho.add(new Cliente(produto, valor));
+            itensCarrinho.add(new Produto(produto, valor));
+            somaProdutos += valor;
         } else {
             System.out.printf("""
                     ** Produto não adicionado.
@@ -32,13 +34,17 @@ public class Compra {
         }
     }
     public void exibirLista() {
-        List<Cliente> listaOrdenada = new ArrayList<>(itensCarrinho);
+        List<Produto> listaOrdenada = new ArrayList<>(itensCarrinho);
         Collections.sort(listaOrdenada);
         System.out.println("\n---- CARRINHO DE COMPRAS ----");
-        for (Cliente p : listaOrdenada){
+        for (Produto p : listaOrdenada){
             System.out.printf("   > %s - R$%.2f \n", p.getNomeProduto().toUpperCase(), p.getValorProduto());
         }
+        System.out.printf("VALOR TOTAL >>> R$%.2f\n", somaProdutos);
+        System.out.printf("TOTAL LIMITE DISPONIVEL >>> R$%.2f\n", limite);
         System.out.println("----------------------------\n");
     }
-
+    public void exibirLimite(){
+        System.out.printf("\nLIMITE DISPONIVEL>>> R$%.2f.\n", limite);
+    }
 }

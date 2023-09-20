@@ -1,13 +1,13 @@
 package meu.projeto.compras.modelo;
 
-public class Cliente implements Comparable<Cliente> {
+public class Produto implements Comparable<Produto> {
 
     // atributos :::
     private String nomeProduto;
     private double valorProduto;
 
     // construtor :::
-    public Cliente(String nomeProduto, double valorProduto) {
+    public Produto(String nomeProduto, double valorProduto) {
         this.nomeProduto = nomeProduto;
         this.valorProduto = valorProduto;
     }
@@ -26,7 +26,7 @@ public class Cliente implements Comparable<Cliente> {
     }
 
     @Override
-    public int compareTo(Cliente o) {
+    public int compareTo(Produto o) {
         return nomeProduto.compareTo(o.nomeProduto);
     }
 }
